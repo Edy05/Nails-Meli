@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nails Meli | Estudio Profesional de Uñas</title>
+  <meta name="description" content="Manicura, pedicura, base rubber y diseños personalizados. Reserva tu cita fácilmente.">
+  <meta property="og:title" content="Nails Meli | Estudio Profesional">
+  <meta property="og:description" content="Belleza que perdura, estilo que define. 💅✨">
+  <meta property="og:image" content="https://placehold.co/1200x630/001833/ffffff?text=Nails+Meli">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header id="header">
+      <div class="header-inner">
+        <a href="#inicio" class="logo">
+          <div class="logo-circle"><i class="fa-solid fa-hand-sparkles"></i></div>
+          <div class="logo-text">
+            <span class="logo-name">Nails Meli</span>
+            <span class="logo-status">Abierto · Cierra 7pm</span>
+          </div>
+        </a>
+        <div class="header-actions">
+          <a href="https://wa.me/5491112345678" target="_blank" aria-label="WhatsApp" class="icon-btn"><i class="fa-brands fa-whatsapp"></i></a>
+          <button id="menu-toggle" aria-label="Menú"><i class="fa-solid fa-bars"></i></button>
+        </div>
+      </div>
+    </header>
+
+    <nav id="nav-menu" class="slide-menu">
+      <ul>
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#galeria" class="nav-link">Galería</a></li>
+        <li><a href="#reservar" class="nav-link">Reservar</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="inicio" class="hero easeLoad">
+        <div class="cover-wrapper">
+          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=800&q=80" alt="Portada Nails Meli">
+        </div>
+        <div class="hero-info">
+          <div class="rating"><i class="fa-solid fa-star"></i> 5.0 <span>(48 reseñas)</span></div>
+          <div class="price-range">CUP · $$$</div>
+          <h1>Nails Meli</h1>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Tu Ciudad, Tu Barrio</p>
+          <p class="description">Belleza que perdura, estilo que define. 💜🌷 Especialistas en cuidado natural, base rubber y diseños exclusivos. Tu espacio de confianza y elegancia.</p>
+        </div>
+      </section>
+
+      <section id="servicios" class="section">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+          <article class="service-card easeLoad" data-category="manicura">
+            <div class="card-img"><img src='./imagenes/unia1.jpg' alt="Manicura"></div>
+            <div class="card-content">
+              <h3>Manicura & Base Rubber</h3>
+              <p class="card-desc">Fortalece y protege tus uñas naturales. Técnica rusa + acabado impecable.</p>
+              <div class="card-meta"><span><i class="fa-solid fa-list"></i> 4 servicios</span><span class="arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
+            </div>
+          </article>
+          <article class="service-card easeLoad" data-category="pedicura">
+            <div class="card-img"><img src='./imagenes/unia2.jpg' alt="Pedicura"></div>
+            <div class="card-content">
+              <h3>Pedicura Spa Pro</h3>
+              <p class="card-desc">Hidroterapia, exfoliación y masaje relajante. Pies suaves y perfectos.</p>
+              <div class="card-meta"><span><i class="fa-solid fa-list"></i> 3 servicios</span><span class="arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
+            </div>
+          </article>
+          <article class="service-card easeLoad" data-category="spajelly">
+            <div class="card-img"><img src='./imagenes/unia3.jpg' alt="Jelly Spa"></div>
+            <div class="card-content">
+              <h3>Jelly Spa & Hidratación</h3>
+              <p class="card-desc">Tratamiento sensorial con jelly. Hidratación profunda y relajación total.</p>
+              <div class="card-meta"><span><i class="fa-solid fa-list"></i> 2 servicios</span><span class="arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
+            </div>
+          </article>
+          <article class="service-card easeLoad" data-category="info">
+            <div class="card-img"><img src='./imagenes/unia4.jpg' alt="Información"></div>
+            <div class="card-content">
+              <h3>Información & Políticas</h3>
+              <p class="card-desc">Depósitos, horarios, cancelaciones y todo lo que debes saber antes de venir.</p>
+              <div class="card-meta"><span><i class="fa-solid fa-circle-info"></i> Detalles</span><span class="arrow"><i class="fa-solid fa-chevron-right"></i></span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="galeria" class="section">
+        <h2 class="section-title">Galería de Trabajos</h2>
+        <div class="filters easeLoad">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="rubber">Base Rubber</button>
+          <button class="filter-btn" data-filter="acrilico">Acrílico</button>
+          <button class="filter-btn" data-filter="diseño">Diseños</button>
+          <button class="filter-btn" data-filter="pedicura">Pedicura</button>
+        </div>
+        <div class="gallery-grid" id="gallery">
+          <!-- Se genera dinámicamente o puedes hardcodearlas -->
+        </div>
+      </section>
+
+      <section id="reservar" class="section form-section">
+        <h2 class="section-title">Reserva tu Cita</h2>
+        <form id="booking-form" class="booking-form easeLoad">
+          <div class="form-group">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" required placeholder="Ej: María López">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Servicio</label>
+              <select id="service" required>
+                <option value="" disabled selected>Selecciona</option>
+                <option value="Base Rubber - Uñas Cortas">Base Rubber - Cortas</option>
+                <option value="Base Rubber - Uñas Largas">Base Rubber - Largas</option>
+                <option value="Pedicura Spa Pro">Pedicura Spa Pro</option>
+                <option value="Jelly Manicura">Jelly Manicura</option>
+                <option value="Diseño Personalizado">Diseño Personalizado</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Fecha preferida</label>
+              <input type="date" id="date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notas adicionales</label>
+            <textarea id="notes" rows="3" placeholder="Diseño de referencia, alergias, etc."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Confirmar por WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
+        </form>
+      </section>
+    </main>
+
+    <footer id="contacto" class="footer easeLoad">
+      <h3>Nails Meli</h3>
+      <p class="footer-desc">Belleza que perdura, estilo que define. 💜🌷</p>
+      
+      <div class="footer-contacts">
+        <div class="contact-item"><i class="fa-solid fa-clock"></i><span>Abre lunes, 9am</span></div>
+        <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Tu Ciudad, Tu Barrio</span></div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://wa.me/5491112345678" target="_blank"><i class="fa-brands fa-whatsapp"></i> +54 9 11 1234 5678</a>
+        <a href="tel:+5491112345678"><i class="fa-solid fa-phone"></i> +54 9 11 1234 5678</a>
+        <a href="mailto:nailsmeli@gmail.com"><i class="fa-solid fa-envelope"></i> nailsmeli@gmail.com</a>
+      </div>
+
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+
+      <p class="copyright">© 2026 Nails Meli. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <a href="https://wa.me/5491112345678" target="_blank" class="wa-float" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <div id="lightbox" class="lightbox">
+    <button class="lb-close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lb-prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="lb-container">
+      <img id="lb-img" src="" alt="Trabajo Nails Meli">
+      <p id="lb-caption"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
