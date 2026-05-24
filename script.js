@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Gallery Data & Rendering
   const galleryData = [
     { id: 1, cat: 'rubber', src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800', alt: 'Base Rubber Clásico' },
-    { id: 2, cat: 'diseño', src: 'https://images.unsplash.com/photo-1596914671895-3d4460a16a48?w=800', alt: 'Diseño Minimalista' },
+    { id: 2, cat: 'diseño', src: './imagenes/unias-descarga1.webp', alt: 'Diseño Minimalista' },
     { id: 3, cat: 'pedicura', src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800', alt: 'Pedicura Spa' },
     { id: 4, cat: 'acrilico', src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800', alt: 'Acrílico Esculpido' },
-    { id: 5, cat: 'rubber', src: 'https://images.unsplash.com/photo-1596914671895-3d4460a16a48?w=800', alt: 'Base Rubber Nude' },
+    { id: 5, cat: 'rubber', src: './imagenes/unias-descarga3.webp', alt: 'Base Rubber Nude' },
     { id: 6, cat: 'diseño', src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800', alt: 'Diseño Francesa' },
     { id: 7, cat: 'pedicura', src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800', alt: 'Pedicura Gel' },
     { id: 8, cat: 'acrilico', src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800', alt: 'Acrílico Ombré' }
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Form -> WhatsApp
   const form = document.getElementById('booking-form');
-  const PHONE = '5491112345678'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
+  const PHONE = '56046231'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -142,7 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Simple mapping logic
       let target = category === 'manicura' ? 'Base Rubber' : 
                    category === 'pedicura' ? 'Pedicura Spa Pro' : 
-                   category === 'spajelly' ? 'Jelly Manicura' : '';
+                   category === 'spajelly' ? 'Jelly Manicura' : 
+                   category ==='acrilico'  ?  'Acrilico'  :'';
       
       if(target) {
         for(let opt of select.options) {
