@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Form -> WhatsApp
   const form = document.getElementById('booking-form');
-  const PHONE = '5491112345678'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
+  const PHONE = '56046231'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
