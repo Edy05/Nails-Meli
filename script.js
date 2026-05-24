@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Scroll Animations (Intersection Observer)
+  // 1. Scroll Animations (Optimized for mobile)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.easeLoad').forEach(el => observer.observe(el));
 
   // 2. Mobile Menu
@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Gallery Data & Rendering
   const galleryData = [
-    { id: 1, cat: 'rubber', src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800', alt: 'Base Rubber Clásico' },
-    { id: 2, cat: 'diseño', src: './imagenes/unias-descarga1.webp', alt: 'Diseño Minimalista' },
-    { id: 3, cat: 'pedicura', src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800', alt: 'Pedicura Spa' },
-    { id: 4, cat: 'acrilico', src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800', alt: 'Acrílico Esculpido' },
-    { id: 5, cat: 'rubber', src: './imagenes/unias-descarga3.webp', alt: 'Base Rubber Nude' },
-    { id: 6, cat: 'diseño', src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800', alt: 'Diseño Francesa' },
-    { id: 7, cat: 'pedicura', src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800', alt: 'Pedicura Gel' },
-    { id: 8, cat: 'acrilico', src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800', alt: 'Acrílico Ombré' }
+    { id: 1, cat: 'rubber', src: './imagenes/unias-descarga1.webp', alt: 'Base Rubber Clásico' },
+    { id: 2, cat: 'diseño', src: './imagenes/unias-descarga2.webp', alt: 'Diseño Minimalista' },
+    { id: 3, cat: 'pedicura', src: './imagenes/unias-descarga3.webp', alt: 'Pedicura Spa' },
+    { id: 4, cat: 'acrilico', src: './imagenes/unia1.jpg', alt: 'Acrílico Esculpido' },
+    { id: 5, cat: 'rubber', src: './imagenes/unia2.jpg', alt: 'Base Rubber Nude' },
+    { id: 6, cat: 'diseño', src: './imagenes/unia3.jpg', alt: 'Diseño Francesa' },
+    { id: 7, cat: 'pedicura', src: './imagenes/unia4.jpg', alt: 'Pedicura Gel' },
+    { id: 8, cat: 'acrilico', src: './imagenes/unias-descarga1.webp', alt: 'Acrílico Ombré' }
   ];
 
   const galleryGrid = document.getElementById('gallery');
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderGallery() {
     galleryGrid.innerHTML = galleryData.map(item => `
       <div class="gallery-item easeLoad" data-category="${item.cat}">
-        <img src="${item.src.replace('w=800', 'w=400')}" alt="${item.alt}" loading="lazy">
+        <img src="${item.src}" alt="${item.alt}" loading="lazy">
       </div>
     `).join('');
     document.querySelectorAll('.gallery-item.easeLoad').forEach(el => observer.observe(el));
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
     currentImages = galleryData.filter(img => activeFilter === 'all' || img.cat === activeFilter);
-    currentIndex = currentImages.findIndex(img => img.src === item.querySelector('img').src.replace('w=400', 'w=800'));
+    currentIndex = currentImages.findIndex(img => img.src === item.querySelector('img').src);
     
     openLightbox();
   });
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Form -> WhatsApp
   const form = document.getElementById('booking-form');
-  const PHONE = '56046231'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
+  const PHONE = '5491112345678'; // 🔴 REEMPLAZA CON EL NÚMERO REAL
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const date = document.getElementById('date').value;
     const notes = document.getElementById('notes').value.trim();
 
-    const msg = `Hola Nails Meli 💅, soy *${name}*. Quisiera reservar *${service}* para el *${date}*. ${notes ? 'Nota: ' + notes : ''}`;
+    const msg = `Hola Nails Meli , soy *${name}*. Quisiera reservar *${service}* para el *${date}*. ${notes ? 'Nota: ' + notes : ''}`;
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
   });
 
@@ -139,11 +139,11 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', () => {
       const category = card.dataset.category;
       const select = document.getElementById('service');
-      // Simple mapping logic
-      let target = category === 'manicura' ? 'Base Rubber' : 
-                   category === 'pedicura' ? 'Pedicura Spa Pro' : 
-                   category === 'spajelly' ? 'Jelly Manicura' : 
-                   category ==='acrilico'  ?  'Acrilico'  :'';
+      
+      let target = '';
+      if (category === 'manicura') target = 'Base Rubber';
+      else if (category === 'pedicura') target = 'Pedicura Spa Pro';
+      else if (category === 'spajelly') target = 'Jelly Manicura';
       
       if(target) {
         for(let opt of select.options) {
@@ -161,5 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   window.addEventListener('scroll', () => {
     header.style.boxShadow = window.scrollY > 10 ? 'var(--shadow-top)' : 'none';
+  });
+
+  // 8. Image Loading Handler (Fixes flickering/crashing on mobile)
+  document.querySelectorAll('img').forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
   });
 });
