@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const galleryGrid = document.getElementById('gallery');
   
-  function renderGallery() {
-    galleryGrid.innerHTML = galleryData.map(item => `
-      <div class="gallery-item easeLoad" data-category="${item.cat}">
-        <img src="${item.src}" alt="${item.alt}" loading="lazy">
-      </div>
-    `).join('');
-    document.querySelectorAll('.gallery-item.easeLoad').forEach(el => observer.observe(el));
-  }
+ function renderGallery() {
+  galleryGrid.innerHTML = galleryData.map((item, index) => `
+    <div class="gallery-item easeLoad" data-category="${item.cat}" data-src="${item.src}" data-index="${index}">
+      <img src="${item.src}" alt="${item.alt}" loading="lazy">
+    </div>
+  `).join('');
+  document.querySelectorAll('.gallery-item.easeLoad').forEach(el => observer.observe(el));
+}
   renderGallery();
 
   // 4. Gallery Filters
@@ -75,16 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentImages = [];
   let currentIndex = 0;
 
-  galleryGrid.addEventListener('click', (e) => {
-    const item = e.target.closest('.gallery-item');
-    if (!item || item.classList.contains('hidden')) return;
-    
-    const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-    currentImages = galleryData.filter(img => activeFilter === 'all' || img.cat === activeFilter);
-    currentIndex = currentImages.findIndex(img => img.src === item.querySelector('img').src);
-    
+galleryGrid.addEventListener('click', (e) => {
+  const item = e.target.closest('.gallery-item');
+  if (!item || item.classList.contains('hidden')) return;
+
+  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+  currentImages = galleryData.filter(img => activeFilter === 'all' || img.cat === activeFilter);
+  
+  // Comparamos con data-src (ruta relativa exacta) en vez de .src (URL absoluta)
+  const clickedSrc = item.dataset.src;
+  currentIndex = currentImages.findIndex(img => img.src === clickedSrc);
+
+  if (currentIndex !== -1) {
     openLightbox();
-  });
+  }
+});
 
   function openLightbox() {
     lightbox.classList.add('active');
@@ -98,10 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateLightbox() {
-    const img = currentImages[currentIndex];
-    lbImg.src = img.src;
-    lbCaption.textContent = img.alt;
-  }
+  if (currentIndex < 0 || currentIndex >= currentImages.length) return;
+  const img = currentImages[currentIndex];
+  lbImg.src = img.src;
+  lbCaption.textContent = img.alt;
+}
 
   function nextSlide() { currentIndex = (currentIndex + 1) % currentImages.length; updateLightbox(); }
   function prevSlide() { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; updateLightbox(); }
